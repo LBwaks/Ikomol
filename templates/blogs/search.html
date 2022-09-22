@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+{% load blog_tags %}
+{% load recent_blogs %}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'blogs' %}">Blogs</a></li>
+          <li>Search Results For:</li>
+        </ol>
+        <h2>{{q}}</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-12 entries mx-auto">
+            <div class="row d-flex align-items-stretch">
+          {% for blog in results %}
+          
+          <div class=" col-lg-6 col-md-6 d-flex align-items-stretch">
+            <article class="entry">
+
+                <div class="entry-img">
+                  <img src="{{blog.photo.url}}" alt="" class="img-fluid">
+                </div>
+    
+                <h2 class="entry-title">
+                  <a href="{{blog.get_absolute_url}}">{{blog.title}}</a>
+                </h2>
+    
+                <div class="entry-meta">
+                  <ul>
+                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a>{{blog.user.username}}</a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a><time>{{blog.created_date|naturaltime}}</time></a></li>
+    
+                  </ul>
+                </div>
+    
+                <div class="entry-content">
+                  <p>
+                    {{blog.description | safe | truncatewords:20}}             </p>
+                  <div class="read-more">
+                    <a href="{{blog.get_absolute_url}}">Read More</a>
+                  </div>
+                </div>
+    
+              </article><!-- End blog entry -->
+            </div>
+          {% empty %}
+          <article class="entry">
+            <div class="entry-content">
+              <p>
+                No Search Results With Those Keywords Found !</p>
+             
+            </div>
+
+          </article><!-- End blog entry -->
+        
+    
+          {% endfor %}
+        </div>
+           
+{% if  results %}
+            <div class="blog-pagination">
+              <ul class="justify-content-center">
+                {% if results.has_previous %}
+                <li><a href="?page={{results.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"> <span>&laquo;</span> </a></li>
+                {% endif %}
+
+                {% for i in results.paginator.page_range %}
+                {% if results.number == i %}
+                <li class ="active"><a href="#">{{i}}</a></li>
+                {% else %}
+                <li><a href="?page={{i}}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{i}}</a></li>
+                {% endif %}
+                {% endfor %}
+
+                {% if results.has_next %}
+                <li><a href="?page={{results.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">&raquo;</a></li>
+                
+                {% endif %}
+                
+              </ul>
+            </div>
+{% endif %}
+          </div><!-- End blog entries list -->
+
+         
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Section -->
+
+  </main><!-- End #main -->
+  {% endblock  %}

@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock title %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+{% comment %} {% load humanize %} {% endcomment %}
+{% include 'includes/messages.html' %}
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active" style="background-image: url({% static 'img/slide/slide-1.jpg'%})">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Ikomol Internet</span></h2>
+                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <a href="{% url 'about' %}" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item" style="background-image: url({% static 'img/slide/slide-2.jpg' %})">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated fanimate__adeInDown">Ikomol  <span> Pricing</span></h2>
+                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <a href="{% url 'pricing' %}" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-item" style="background-image: url({% static 'img/slide/slide-3.jpg' %});">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Ikomol <span>Services</span></h2>
+                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <a href="{% url 'services' %}" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+  
+
+  
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="row">
+          
+          
+<h4 class="text-center">Our Services</h4>
+          {% for service in  services %}
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">            
+            <div class="card mb-5 shadow  bg-body rounded text-center " style="width: 18rem;">
+              <img src="{{service.photo.url}}" class="card-img-top animate__animated animate__bounce animate__faster" alt="Sevice Image">
+              <div class="card-body bg-light text-dark ">
+                <h5 class="card-title fw-bold fs-5 py-1">{{service.title}}</h5>
+                <p class="card-text text-muted">{{service.description | truncatewords:20 }}</p>
+                <a href="{% url 'services' %}" class="btn btn-outline-secondary">Read More </a>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+<p> No Service Listed !</p>
+          {% endfor %}
+
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+    <hr>
+
+
+
+<section class="pricing-plan">
+  <div class="container">
+      <div class="row">
+        <h2 class="text-center text-decoration-underline">Choose Your Plan </h2>
+          {% for plan in pricings %}
+          <div class="col-md-4 col-sm-6">
+           {% if plan.type == 'Ostrich' %}
+           <div class="pricingTable black">
+           {% elif plan.type == 'Eagle' %}
+           <div class="pricingTable orange">
+           {% elif plan.type == 'Falcon' %}
+           <div class="pricingTable purple">
+           {% endif %}
+                <h3 class="title">{{plan.download_speed}}</h3>
+                <div class="price-value">Ksh {{plan.price |intcomma}}
+                    <span class="month">/{{plan.period}}</span>
+                </div>
+                <ul class="pricing-content">
+ 
+
+                    <li {% if not plan.download_speed %} class="disable text-decoration-line-through" {% endif %}> 
+                      {% if plan.download_speed %}  {{plan.download_speed}} 
+                      {% comment %} {% else %}<i class="bx bx-x"></i> <span>{{plan.download_speed}}</span> {% endcomment %}
+                      {% endif %}
+                  </li>
+
+                  <li {% if not plan.sd_movie_music_streaming %} class="disable text-decoration-line-through" {% endif %}> 
+                    {% if plan.sd_movie_music_streaming %}  {{plan.sd_movie_music_streaming}} 
+                    {% else %}<span>SD Movie &amp; music streaming</span>
+                    {% endif %}
+                </li>
+                <li {% if not plan.internet_surfing %} class="disable text-decoration-line-through" {% endif %}> 
+                  {% if plan.internet_surfing %}  {{plan.internet_surfing}} 
+                  {% else %}<span>Internet surfing, social media &amp; email</span>
+                  {% endif %}
+              </li>
+              <li {% if not plan.unlimited_usage %} class="disable text-decoration-line-through" {% endif %}> 
+                {% if plan.unlimited_usage %}  {{plan.unlimited_usage}} 
+                {% else %}<span>Unlimited Usage</span>
+                {% endif %}
+            </li>
+            <li {% if not plan.hd_tv_shows %} class="disable text-decoration-line-through" {% endif %}> 
+              {% if plan.hd_tv_shows %}  {{plan.hd_tv_shows}} 
+              {% else %}<span>HD &amp; TV Shows</span>
+              {% endif %}
+          </li>
+          <li {% if not plan.light_video_downloads %} class="disable text-decoration-line-through" {% endif %}> 
+            {% if plan.light_video_downloads %}  {{plan.light_video_downloads}} 
+            {% else %}<span>Light Video downloads</span>
+            {% endif %}
+        </li>
+        <li {% if not plan.heavy_video_downloads %} class="disable text-decoration-line-through" {% endif %}> 
+          {% if plan.heavy_video_downloads %}  {{plan.heavy_video_downloads}} 
+          {% else %}<span>Heavy Video downloads</span>
+          {% endif %}
+      </li>
+      <li {% if not plan.multiple_devices %} class="disable text-decoration-line-through" {% endif %}> 
+        {% if plan.multiple_devices %}  {{plan.multiple_devices}} 
+        {% else %}<span>Multiple devices</span>
+        {% endif %}
+    </li>
+    <li {% if not plan.online_gaming_live_streams %} class="disable text-decoration-line-through" {% endif %}> 
+      {% if plan.online_gaming_live_streams %}  {{plan.online_gaming_live_streams}} 
+      {% else %}<span>Online gaming &amp; live streams</span>
+      {% endif %}
+  </li>
+  <li {% if not plan.cctv_devices_apability %} class="disable text-decoration-line-through" {% endif %}> 
+    {% if plan.cctv_devices_apability %}  {{plan.cctv_devices_apability}} 
+    {% else %}<span>CCTV devices Capability</span>
+    {% endif %}
+</li>
+                  <li {% if not plan.heavy_online_gaming_downloading %} class="disable text-decoration-line-through" {% endif %}> 
+                    {% if plan.heavy_online_gaming_downloading %}  {{plan.heavy_online_gaming_downloading}} 
+                    {% else %}<span>Heavy online gaming &amp; Downloading</span>
+                    {% endif %}
+                </li>
+                  
+                       </ul>
+                       
+                <a href="tel:+254726114104" class="pricingTable-signup">Call Us</a>
+            </div>
+        </div>
+          {% empty %}
+          <p>No Plans Available! </p>
+          {% endfor %}
+          
+          
+      </div>
+  </div>
+</div>
+</div>
+</section>
+
+
+
+
+  </main><!-- End #main -->
+{% endblock  %}

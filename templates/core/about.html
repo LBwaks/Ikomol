@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}About Us {% endblock title %}
+{% block content %}
+{% load static %}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li>About Us</li>
+        </ol>
+        <h2>About Us</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-6">
+            <img src="{% static 'img/slide/slide-3.jpg' %}" class="img-fluid" alt="About Us">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 content">
+            <h4 class="fw-bold"> IKomol Communication is a committed digital business enterprise based in Nairobi, Kenya</h4>
+            <p class="fst-italic">
+              We offer
+              ICT solutions to homes, SME and schools ranging from internet solutions, consultancy services as
+              well contractual works for telecommunication companies.Our range of services include:
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> Consultancy.</li>
+              <li><i class="bi bi-check-circle"></i> Home internet.</li>
+              <li><i class="bi bi-check-circle"></i> Corporate Internet.</li>
+              <li><i class="bi bi-check-circle"></i> SLA- based support.</li>
+            </ul>
+            <p>
+              We are a team of passionate professionals
+committed to delivering premium solutions in networking, cable installation and maintenance among
+other network related services.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+  
+
+
+  </main><!-- End #main -->
+  {% endblock  %}
