@@ -172,6 +172,7 @@ h6 {
   color: #545454;
   white-space: nowrap;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .navbar a i,
@@ -1033,7 +1034,8 @@ a {
   text-transform: uppercase;
   z-index: 1;
   position: relative;
-  transition: all .3s ease 0s
+  transition: all .3s ease 0s;
+  text-decoration: none;
 }
 
 .pricingTable .pricingTable-signup:hover {
@@ -1318,6 +1320,7 @@ a {
 .blog .entry .entry-title a {
   color: #545454;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .blog .entry .entry-title a:hover {
@@ -1353,6 +1356,7 @@ a {
   font-size: 14px;
   display: inline-block;
   line-height: 1;
+  text-decoration: none;
 }
 
 .blog .entry .entry-content p {
@@ -1372,6 +1376,7 @@ a {
   transition: 0.3s;
   font-size: 14px;
   border-radius: 4px;
+  text-decoration: none;
 }
 
 .blog .entry .entry-content .read-more a:hover {
@@ -1427,6 +1432,7 @@ a {
 .blog .entry .entry-footer a {
   color: #616161;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .blog .entry .entry-footer a:hover {
@@ -1636,6 +1642,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
 
 .blog .blog-pagination li.active,
@@ -1718,6 +1725,7 @@ a {
 .blog .sidebar .categories ul a {
   color: #545454;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .blog .sidebar .categories ul a:hover {
@@ -1748,6 +1756,7 @@ a {
 .blog .sidebar .recent-posts h4 a {
   color: #545454;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .blog .sidebar .recent-posts h4 a:hover {
@@ -1783,6 +1792,7 @@ a {
   border: 1px solid white;
   display: inline-block;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .blog .sidebar .tags ul a:hover {
@@ -1795,6 +1805,7 @@ a {
   padding-left: 5px;
   color: #ededed;
   font-size: 14px;
+  text-decoration: none;
 }
 
 /*--------------------------------------------------------------
@@ -1943,6 +1954,7 @@ a {
   transition: 0.3s;
   display: inline-block;
   line-height: 1;
+  text-decoration: none;
 }
 
 #footer .footer-top .footer-links ul a:hover {
