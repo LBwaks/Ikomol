@@ -77,11 +77,13 @@ h6 {
 #topbar .contact-info i span {
   padding-left: 5px;
   color: #fff;
+  
 }
 
 #topbar .contact-info i a {
   line-height: 0;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 #topbar .contact-info i a:hover {
@@ -93,6 +95,7 @@ h6 {
   line-height: 0;
   transition: 0.3s;
   margin-left: 10px;
+  text-decoration: none;
 }
 
 #topbar .social-links a:hover {

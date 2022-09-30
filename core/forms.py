@@ -16,7 +16,7 @@ class ContactForm(forms.ModelForm):
         email = cleaned_data.get('email')
         subject =cleaned_data.get('subject')
         message =f'{name} with email {email} said:'
-        message += f'\n"{subject}"\n\n'
+        message += f'\n Subject: "{subject}"\n\n'
         message += cleaned_data.get('message')
 
         return name, subject,message

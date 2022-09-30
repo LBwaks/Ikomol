@@ -7,7 +7,7 @@
 {% include 'includes/messages.html' %}
 <!-- ======= Hero Section ======= -->
 <section id="hero">
-    <div class="hero-container">
+    <div class="hero-container" style="background:linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5));">
       <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
 
         <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
@@ -15,33 +15,40 @@
         <div class="carousel-inner" role="listbox">
 
           <!-- Slide 1 -->
-          <div class="carousel-item active" style="background-image: url({% static 'img/slide/slide-1.jpg'%})">
+          <div class="carousel-item active" style="background-image:linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url({% static 'img/slide/slide1.jpg'%})">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Ikomol Internet</span></h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <h2 class="animate__animated animate__fadeInDown">iKomol Internet </h2>
+                <p class="animate__animated animate__fadeInUp">
+                  iKomol Communication is a committed digital business enterprise based in Nairobi, Kenya. We offer
+                  ICT solutions to homes, SME and schools ranging from internet solutions, consultancy services as
+                  well contractual works for telecommunication companies.</p>
                 <a href="{% url 'about' %}" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
               </div>
             </div>
           </div>
 
           <!-- Slide 2 -->
-          <div class="carousel-item" style="background-image: url({% static 'img/slide/slide-2.jpg' %})">
+          <div class="carousel-item" style="background-image:linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url({% static 'img/slide/slide2.jpg' %})">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated fanimate__adeInDown">Ikomol  <span> Pricing</span></h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <h2 class="animate__animated fanimate__adeInDown">Variety Of Plans  <span> </span></h2>
+                <p class="animate__animated animate__fadeInUp">iKomol Internet is dedicate to enable every one afford to have a fast internet connection . Thus we have a variety of packages to choose from. </p>
                 <a href="{% url 'pricing' %}" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
               </div>
             </div>
           </div>
 
           <!-- Slide 3 -->
-          <div class="carousel-item" style="background-image: url({% static 'img/slide/slide-3.jpg' %});">
+          <div class="carousel-item" style="background-image:linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url({% static 'img/slide/slide3.jpg' %});">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Ikomol <span>Services</span></h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <h2 class="animate__animated animate__fadeInDown">What We Offer <span></span></h2>
+                <p class="animate__animated animate__fadeInUp">
+                  We offer
+                  ICT solutions to homes, SME and schools ranging from internet solutions, consultancy services as
+                  well contractual works for telecommunication companies.
+                </p>
                 <a href="{% url 'services' %}" class="btn-get-started animate__animated animate__fadeInUp">Read More</a>
               </div>
             </div>
@@ -76,9 +83,10 @@
           
 <h4 class="text-center">Our Services</h4>
           {% for service in  services %}
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">            
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch mt-4">  
+                   
             <div class="card mb-5 shadow  bg-body rounded text-center " style="width: 18rem;">
-              <img src="{{service.photo.url}}" class="card-img-top animate__animated animate__bounce animate__faster" alt="Sevice Image">
+            
               <div class="card-body bg-light text-dark ">
                 <h5 class="card-title fw-bold fs-5 py-1">{{service.title}}</h5>
                 <p class="card-text text-muted">{{service.description | truncatewords:20 }}</p>
@@ -89,8 +97,6 @@
           {% empty %}
 <p> No Service Listed !</p>
           {% endfor %}
-
-
         </div>
 
       </div>
@@ -104,13 +110,16 @@
       <div class="row">
         <h2 class="text-center text-decoration-underline">Choose Your Plan </h2>
           {% for plan in pricings %}
+
           <div class="col-md-4 col-sm-6">
+            
            {% if plan.type == 'Ostrich' %}
            <div class="pricingTable black">
-           {% elif plan.type == 'Eagle' %}
-           <div class="pricingTable orange">
-           {% elif plan.type == 'Falcon' %}
+            {% elif plan.type == 'Falcon' %}
            <div class="pricingTable purple">
+           {% else %}
+           <div class="pricingTable orange">
+           
            {% endif %}
                 <h3 class="title">{{plan.download_speed}}</h3>
                 <div class="price-value">Ksh {{plan.price |intcomma}}

@@ -48,8 +48,11 @@ class ContactView(SuccessMessageMixin,CreateView):
     def form_valid(self,form):
         form.send()
         return super().form_valid(form)
+        
 def error_500(request):
-    return render(request,'500.html')
+    return render(request,'errors/500.html')
     
-def error_404(request,exception):
-    return render(request,'404.html')
+def error_404(request, exception):
+    return render(request,'errors/404.html', status=404)
+def check():
+    pass

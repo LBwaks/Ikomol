@@ -1,6 +1,6 @@
 from django import forms 
 from .models import Comment
-from django_ckeditor_5.widgets import CKEditor5Widget
+from ckeditor.widgets import CKEditorWidget
 
 class CommentForm(forms.ModelForm):
       """Form for comments to the article."""
@@ -15,7 +15,7 @@ class CommentForm(forms.ModelForm):
           widgets = {
               "name":forms.TextInput(attrs={'class':'form-control name ' 'required'}),
               'email': forms.EmailInput(attrs={'class':'form-control email ' 'required'}),
-              "body": CKEditor5Widget(attrs={"class": "django_ckeditor_5"}, config_name="comment" )
+              "body": CKEditorWidget(attrs={"class": "django_ckeditor_5"}, config_name="comment" )
           }
 class SearchForm(forms.Form):
     q = forms.CharField

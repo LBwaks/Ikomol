@@ -1,7 +1,7 @@
 from enum import unique
 from django.db import models
 from django.conf import settings
-from django_ckeditor_5.fields import CKEditor5Field
+from ckeditor.fields import RichTextField
 User = settings.AUTH_USER_MODEL 
 from django.urls import reverse
 from django.contrib.postgres.indexes import GinIndex
@@ -18,7 +18,7 @@ class Tag(models.Model):
     user=models.ForeignKey(User,editable=False,on_delete=models.CASCADE,null=False,related_name='blog_tag_user')
     name = models.CharField(max_length = 255)
     slug = AutoSlugField(populate_from='name' ,slugify_function=my_slugify_function,unique=True)
-    description =CKEditor5Field('Text', config_name='extends')
+    description =RichTextField()
     created_date = models.DateTimeField(auto_now_add = True)
     
     def __str__(self):
@@ -31,7 +31,7 @@ class Blog(models.Model):
     title = models.CharField(max_length = 255)
     slug = AutoSlugField(populate_from='title', slugify_function=my_slugify_function,unique=True)   
     tag = models.ForeignKey(Tag,on_delete=models.CASCADE,related_name='blog_tag')     
-    description = CKEditor5Field('Description', config_name='extends')
+    description =RichTextField()
     photo= models.ImageField(upload_to ='blogs/blog_images/',)    
     is_published = models.BooleanField(default=False)
     
@@ -51,7 +51,7 @@ class Comment(models.Model):
     name = models.CharField( max_length=50)
     slug =AutoSlugField(populate_from='name', slugify_function=my_slugify_function, unique=True)
     email = models.EmailField( max_length=254)
-    body = CKEditor5Field('Your Comment',config_name='extends')
+    body = RichTextField()
     is_published =models.BooleanField(default=True)
     created_date = models.DateTimeField( auto_now_add=True)
 

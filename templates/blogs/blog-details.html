@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Home{% endblock title %}
+{% block title %}{{blog.title}}{% endblock title %}
 {% block content %}
 {% load static %}
 {% load blog_tags %}
@@ -144,7 +144,7 @@
               {% include 'includes/form-search.html' %}
 
               <h3 class="sidebar-title">Recent Posts</h3>
-              <h3 class="sidebar-title">Recent Posts</h3>
+              
               <div class="sidebar-item recent-posts">
                {% recent_blogs as blogs %}
                {% for blog in  blogs %}

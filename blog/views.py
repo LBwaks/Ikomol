@@ -47,6 +47,7 @@ class BlogDetailView(DetailView):
 
         context={'blog':blog,'form':form,'comments':comments}
         return render(request,'blogs/blog-details.html',context)
+
 def search(request):
     form =SearchForm()
     results =[]
@@ -61,4 +62,5 @@ def search(request):
         results=paginator.page(1)
        except EmptyPage:
             results=paginator.page(paginator.num_pages)
-    return render( request,'blogs/search.html',{'form':form,'results':results,'q':q})
+    return render( request,'blogs/search.html',{'form':form,'results':results,'q':q
+    })
