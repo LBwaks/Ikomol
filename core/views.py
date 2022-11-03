@@ -14,6 +14,7 @@ class HomeView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
+        
         pricings = Package.objects.all().order_by('-created_date')
         services = Service.objects.all()
         context['pricings'] = pricings
