@@ -158,16 +158,16 @@ WSGI_APPLICATION = 'Ikomol.wsgi.application'
 # }
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ikomol',
-        'USER':'postgres',
-        'PASSWORD' :'23C00K1E5',
-        'HOST':'localhost',
-        'PORT':'5432'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'ikomol',
+#         'USER':'postgres',
+#         'PASSWORD' :'23C00K1E5',
+#         'HOST':'localhost',
+#         'PORT':'5432'
+#     }
+# }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.getenv('EMAIL_HOST')
