@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<main id="main"  class="d-flex justify-content-center align-items-center align-content-around "style="background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);height:100vh; 
+">     
+  <div class="container">
+    <div class="row d-flex justify-content-center align-items-center align-content-around px-2 ">
+
+      <div class="col-xl-5 col-md-8 col-12   bg-white p-3 rounded">
+
+<u><h5 class="text-center">{% trans "Sign In" %}</h5></u>
+
+
+
+<form class="login" method="POST" action="{% url 'account_login' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+ 
+  <div class="row mb-4">
+    
+
+    <div class="col text-center">
+      <!-- Simple link -->
+     <button class="btn btn-primary btn-block" type="submit">{% trans "Sign In" %}</button>
+
+    </div>
+  </div>
+ 
+</form>
+<br>
+</div>
+</div>
+        
+      </div>
+    
+  
+  </main>
+ {% endblock %}

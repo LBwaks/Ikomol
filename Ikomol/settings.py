@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
-from dotenv import load_dotenv
+# from decouple import config
 import os
-import dj_database_url
+from dotenv import load_dotenv
+# import dj_database_url
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,11 +27,13 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [ ]
 
 
 # Application definition
@@ -45,13 +47,26 @@ INSTALLED_APPS = [
     # "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.sites',
     # created apps
     'core',
     'blog',
+    
     # installed apps
     'django_extensions',
     'storages',
-    'ckeditor',
+    'ckeditor',   
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    "crispy_forms",
+    "crispy_bootstrap5",
+    'django_celery_results',
+    'django_celery_beat',
+    
+    
+    
 ]
 
 MIDDLEWARE = [
@@ -67,7 +82,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Ikomol.urls'
-LOGIN_REDIRECT_URL = '/admin'
+
 
 
 TEMPLATES = [
@@ -89,6 +104,47 @@ TEMPLATES = [
         },
     },
 ]
+AUTHENTICATION_BACKENDS = [
+   
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
+]
+CELERY_BROKER_URL ="redis://127.0.0.1:6379"
+CELERY_ACCEPT_CONTENT =["application/json"]
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TASK_SERIALIZER = "json"
+CELERY_TIMEZONE = "Africa/Nairobi"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+CELERY_RESULT_BACKEND = 'django-db'
+
+CELERYBEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+SITE_ID = 1
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300
+LOGIN_REDIRECT_URL = '/admin'
+LOGIN_REDIRECT_URL = '/'
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': os.getenv('client_id'),
+            'secret': os.getenv('secret'),
+            'key': ''
+        }
+    }
+}
 
 WSGI_APPLICATION = 'Ikomol.wsgi.application'
 
@@ -96,21 +152,21 @@ WSGI_APPLICATION = 'Ikomol.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASE_URL = os.getenv("DATABASE_URL")
-DATABASES = {
-    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1200),
-}
-
-
+# DATABASE_URL = os.getenv("DATABASE_URL")
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('NAME'),
-#         'USER':os.getenv('USER'),
-#         'PASSWORD' :os.getenv('PASSWORD'),
-#         'HOST':os.getenv('HOST'),
-#     }
+#     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1200),
 # }
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ikomol',
+        'USER':'postgres',
+        'PASSWORD' :'23C00K1E5',
+        'HOST':'localhost',
+    }
+}
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.getenv('EMAIL_HOST')

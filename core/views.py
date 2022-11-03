@@ -1,8 +1,10 @@
+from django.http import HttpResponse
 from .models import Package, Service
 from django.shortcuts import render
 from .forms import ContactForm
 from django.views.generic import ListView,CreateView,TemplateView
 from django.contrib.messages.views import SuccessMessageMixin
+from core.tasks import testfunction
 # from 
 
 # Create your views here.
@@ -56,3 +58,7 @@ def error_404(request, exception):
     return render(request,'errors/404.html', status=404)
 def check():
     pass
+
+def test(request):
+    testfunction.delay()
+    return HttpResponse('done')

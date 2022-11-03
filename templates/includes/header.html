@@ -36,9 +36,9 @@
           <li><a class=" {% if url_name == 'contact' %} active {% endif %}" href="{% url 'contact' %}">Contact Us</a></li>
           {% if user.is_authenticated %}
           <li><a href="{% url 'admin:index' %}">Admin</a></li>
-          <li><a href="{% url 'admin:logout' %}">Log Out</a></li>
+          <li><a href="{% url 'account_logout' %}">Log Out</a></li>
           {% else %}
-          <li><a href="{% url 'admin:login' %}">Login</a></li>
+          <li><a href="{% url 'account_login' %}">Login</a></li>
           {% endif %}
         </ul>
         {% endwith %}

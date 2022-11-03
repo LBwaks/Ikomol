@@ -26,6 +26,7 @@ from django.contrib.auth import views as auth_views #new
 urlpatterns = [
     path('admin/login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('admin/', admin.site.urls,name ='admin'),
+    path('accounts/', include('allauth.urls')),
     path('', include('core.urls')),
     path('',include('blog.urls')),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
