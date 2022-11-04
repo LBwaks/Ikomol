@@ -4,7 +4,7 @@ from django import forms
 from .models import Contact
 from django.conf import settings
 from django.core.mail import send_mail
-from .tasks import send_feedback_email_task
+# from .tasks import send_feedback_email_task
 
 class ContactForm(forms.ModelForm):
     class Meta:

@@ -1,13 +1,15 @@
-import os 
-from celery import Celery
+# import os 
+# from celery import Celery
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE','Ikomol.settings')
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE','Ikomol.settings')
 
-app =Celery('Ikomol')
-app.config_from_object('django.conf:settings',namespace='CELERY')
-app.autodiscover_tasks()
+# app =Celery('Ikomol')
+# app.config_from_object('django.conf:settings',namespace='CELERY')
+# app.autodiscover_tasks()
 
-@app.task(bind=True)
+# @app.task(bind=True)
 
-def debug_task(self):
-    print (f'Request:{self.request!r}')
+# def debug_task(self):
+#     print (f'Request:{self.request!r}')
+    
+    

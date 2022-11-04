@@ -101,16 +101,16 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
     
 ]
-CELERY_BROKER_URL ="redis://127.0.0.1:6379"
-CELERY_ACCEPT_CONTENT =["application/json"]
-CELERY_RESULT_SERIALIZER = "json"
-CELERY_TASK_SERIALIZER = "json"
-CELERY_TIMEZONE = "Africa/Nairobi"
-CELERY_TASK_TRACK_STARTED = True
-CELERY_TASK_TIME_LIMIT = 30 * 60
-CELERY_RESULT_BACKEND = 'django-db'
+# CELERY_BROKER_URL ="redis://127.0.0.1:6379"
+# CELERY_ACCEPT_CONTENT =["application/json"]
+# CELERY_RESULT_SERIALIZER = "json"
+# CELERY_TASK_SERIALIZER = "json"
+# CELERY_TIMEZONE = "Africa/Nairobi"
+# CELERY_TASK_TRACK_STARTED = True
+# CELERY_TASK_TIME_LIMIT = 30 * 60
+# CELERY_RESULT_BACKEND = 'django-db'
 
-CELERYBEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+# CELERYBEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 

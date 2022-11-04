@@ -4,7 +4,7 @@ from django.shortcuts import render
 from .forms import ContactForm
 from django.views.generic import ListView,CreateView,TemplateView
 from django.contrib.messages.views import SuccessMessageMixin
-from core.tasks import testfunction
+# from core.tasks import testfunction
 # from 
 
 # Create your views here.
@@ -60,6 +60,6 @@ def error_404(request, exception):
 def check():
     pass
 
-def test(request):
-    testfunction.delay()
-    return HttpResponse('done')
+# def test(request):
+#     testfunction.delay()
+#     return HttpResponse('done')
