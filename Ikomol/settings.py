@@ -50,8 +50,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     "crispy_forms",
     "crispy_bootstrap5",
-    'django_celery_results',
-    'django_celery_beat',
+    # 'django_celery_results',
+    # 'django_celery_beat',
     
     
     
