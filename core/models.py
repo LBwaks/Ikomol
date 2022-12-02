@@ -12,7 +12,7 @@ periods=[
 ]
 speed =[
     ('3 mbps','3 mbps'),
-    ('6 mbps','6 mbps'),
+    ('6 mbps','6 mbps'),e
     ('12 mbps','12 mbps')
 ]
 types =[
