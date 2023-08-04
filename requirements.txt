@@ -18,7 +18,7 @@ cryptography==38.0.1
 defusedxml==0.7.1
 Deprecated==1.2.13
 dj-database-url==1.0.0
-Django==4.1.1
+Django
 django-allauth==0.51.0
 django-celery-beat==2.4.0
 django-celery-results==2.4.0
