@@ -18,10 +18,9 @@ cryptography==38.0.1
 defusedxml==0.7.1
 Deprecated==1.2.13
 dj-database-url==1.0.0
-Django
+Django==4.1.1
 django-allauth==0.51.0
-
-django-ckeditor==6.3.2
+django-ckeditor==6.5.1
 django-crispy-forms==1.14.0
 django-extensions==3.2.1
 django-js-asset==2.0.0
@@ -29,6 +28,7 @@ django-storages==1.13.1
 django-timezone-field==5.0
 gunicorn==20.1.0
 idna==3.4
+importlib-metadata==4.12.0
 jmespath==1.0.1
 kombu==5.2.4
 mypy-extensions==0.4.3
@@ -62,3 +62,4 @@ vine==5.0.0
 wcwidth==0.2.5
 whitenoise==6.2.0
 wrapt==1.14.1
+zipp==3.16.2
