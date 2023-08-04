@@ -20,8 +20,7 @@ Deprecated==1.2.13
 dj-database-url==1.0.0
 Django
 django-allauth==0.51.0
-django-celery-beat==2.4.0
-django-celery-results==2.4.0
+
 django-ckeditor==6.3.2
 django-crispy-forms==1.14.0
 django-extensions==3.2.1
