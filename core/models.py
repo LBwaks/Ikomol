@@ -12,10 +12,12 @@ speed = [
     ("3 mbps", "3 mbps"),
     ("4 mbps", "4 mbps"),
     ("6 mbps", "6 mbps"),
+    ("10 mbps", "10 mbps"),
     ("12 mbps", "12 mbps"),
     ("Custom", "Custom")
     ]
 types = [
+    ("Tit", "Tit"),
     ("Sparrow", "Sparrow"),
     ("Owl", "Owl"),
     ("Ostrich", "Ostrich"),

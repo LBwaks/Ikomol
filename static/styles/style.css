@@ -1065,7 +1065,7 @@ a {
 }
 
 
-
+orange
 .pricingTable.orange .title {
   background: linear-gradient(to bottom right, #f5b038, #000)
 }
@@ -1118,6 +1118,65 @@ a {
 .pricingTable.purple .pricingTable-signup {
   background: linear-gradient(to bottom right, #751E75, #000)
 }
+
+/* summer
+ */
+ .pricingTable .summer .title {
+  background: linear-gradient(to bottom left, #33ccff, #ff99cc)
+}
+
+.pricingTable .summer:hover .price-value {
+  background: linear-gradient(to bottom left, #33ccff, #ff99cc)
+}
+
+.pricingTable .summer .pricing-content li:before {
+  border-color: #33ccff,;
+  color: #33ccff,
+}
+
+.pricingTable .summer .pricingTable-signup {
+  background: linear-gradient(to bottom right, #33ccff, #ff99cc)
+}
+
+/* beige
+ */
+ .pricingTable.beige .title {
+  background: linear-gradient(to bottom left, #999966, #003366)
+}
+
+.pricingTable.beige:hover .price-value {
+  background: linear-gradient(to bottom left, #999966, #003366)
+}
+
+.pricingTable.beige .pricing-content li:before {
+  border-color: #999966,;
+  color: #999966,
+}
+
+.pricingTable.beige .pricingTable-signup {
+  background: linear-gradient(to bottom right, #999966, #003366)
+}
+
+
+/* green
+ */
+ .pricingTable.green .title {
+  background: linear-gradient(to bottom left, #ccff66, #003300)
+}
+
+.pricingTable.beige:hover .price-value {
+  background: linear-gradient(to bottom left, #ccff66, #003300)
+}
+
+.pricingTable.green .pricing-content li:before {
+  border-color: #ccff66,;
+  color: #ccff66,
+}
+
+.pricingTable.green .pricingTable-signup {
+  background: linear-gradient(to bottom right, #ccff66, #003300)
+}
+
 
 @media only screen and (max-width:990px) {
   .pricingTable6 {

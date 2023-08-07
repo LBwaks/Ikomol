@@ -111,12 +111,23 @@
         <h2 class="text-center text-decoration-underline">Choose Your Plan </h2>
           {% for plan in pricings %}
 
-          <div class="col-md-4 col-sm-6">
+          <div class="col-md-3 col-sm-6">
             
            {% if plan.type == 'Ostrich' %}
-           <div class="pricingTable black">
+           <div class="pricingTable summer">
+
             {% elif plan.type == 'Falcon' %}
+           <div class="pricingTable beige">
+
+            {% elif plan.type == 'Sparrow' %}
+           <div class="pricingTable black">
+
+            {% elif plan.type == 'Owl' %}
            <div class="pricingTable purple">
+
+            {% elif plan.type == 'Falcon' %}
+           <div class="pricingTable green">
+
            {% else %}
            <div class="pricingTable orange">
            
