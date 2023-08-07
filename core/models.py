@@ -1,4 +1,4 @@
-from email import message
+
 from django.db import models
 from django.conf import settings
 
@@ -8,8 +8,20 @@ from django_extensions.db.fields import AutoSlugField
 
 # Create your models here.
 periods = [("Day", "Day"), ("Month", "Month"), ("Year", "Year")]
-speed = [("3 mbps", "3 mbps"), ("6 mbps", "6 mbps"), ("12 mbps", "12 mbps")]
-types = [("Ostrich", "Ostrich"), ("Eagle", "Eagle"), ("Falcon", "Falcon")]
+speed = [
+    ("3 mbps", "3 mbps"),
+    ("4 mbps", "4 mbps"),
+    ("6 mbps", "6 mbps"),
+    ("12 mbps", "12 mbps"),
+    ("Custom", "Custom")
+    ]
+types = [
+    ("Sparrow", "Sparrow"),
+    ("Owl", "Owl"),
+    ("Ostrich", "Ostrich"),
+    ("Eagle", "Eagle"),
+    ("Falcon", "Falcon")
+    ]
 
 
 def my_slugify_function(content):
