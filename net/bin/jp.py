@@ -1,4 +1,4 @@
-#!/home/bwaks/Desktop/Ikomol/net/bin/python
+#!/home/bwaks/Desktop/Ikomol/net/bin/python3.11
 
 import sys
 import json

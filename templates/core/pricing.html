@@ -25,7 +25,7 @@
           <div class="row">
            
               {% for plan in pricings %}
-              <div class="col-md-3 col-sm-6">
+              <div class="col-md-3 col-sm-6  pb-4 ">
                
            {% if plan.type == 'Ostrich' %}
            <div class="pricingTable summer">
@@ -39,7 +39,7 @@
             {% elif plan.type == 'Owl' %}
            <div class="pricingTable purple">
 
-            {% elif plan.type == 'Falcon' %}
+            {% elif plan.type == 'Tit' %}
            <div class="pricingTable green">
 
            {% else %}
@@ -124,6 +124,82 @@
     </div>
     </div>
     </section>
+<!-- START PRICING -->
+        <section class="section bg-light" id="pricing">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="header-title text-center mb-4">
+                            <p class="text-uppercase text-muted mb-2">Offers</p>
+                            <h3>Choose Your Best Plan</h3>
+                            <div class="title-border mt-3"></div>
+                            <p class="title-desc text-muted mt-3">We craft digital, graphic and dimensional thinking, to
+                                create category leading brand experiences that have meaning and add a value.</p>
+                        </div>
+                    </div><!--end col-->
+                </div>
+                <!--end row-->
 
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="pricing-box bg-white box-shadow text-center p-5 mt-5 rounded">
+                            <p class="price-title mb-4 pb-3">Classic</p>
+                            <h1 class="mb-0 price">$34.99</h1>
+                            <div class="pricing-features mt-4 pt-4">
+                                <p>Customizad Plans</p>
+                                <p>Billing Report</p>
+                                <p>Access to Asana</p>
+                            </div>
+                            <div class="mt-5">
+                                <a href="#" class="btn btn-primary w-100">Purchase Now</a>
+                            </div>
+                        </div><!--end pricing-box-->
+                    </div>
+                    <!--end col-->
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="pricing-box bg-white box-shadow text-center p-5 mt-5 rounded">
+                            <div class="pricing-label">
+                                <h5 class="text-white fs-16">Sale</h5>
+                            </div>
+
+                            <p class="price-title mb-4 pb-3">Popular</p>
+                            <h1 class="mb-0 price">$49.99</h1>
+                            <div class="pricing-features mt-4 pt-4">
+                                <p>Customizad Plans</p>
+                                <p>Billing Report</p>
+                                <p>Access to Asana</p>
+                                <p>Unlimited themes</p>
+                            </div>
+                            <div class="mt-5">
+                                <a href="#" class="btn btn-primary w-100">Purchase Now</a>
+                            </div>
+                        </div>
+                        <!--end pricing-box-->
+                    </div>
+                    <!--end col-->
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="pricing-box bg-white box-shadow text-center p-5 mt-5 rounded">
+                            <p class="price-title mb-4 pb-3">Ultimate</p>
+                            <h1 class="mb-0 price">$89.99</h1>
+                            <div class="pricing-features mt-4 pt-4">
+                                <p>Customizad Plans</p>
+                                <p>Billing Report</p>
+                                <p>Access to Asana</p>
+                            </div>
+                            <div class="mt-5">
+                                <a href="#" class="btn btn-primary w-100">Purchase Now</a>
+                            </div>
+                        </div>
+                        <!--end pricing-box-->
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+            </div>
+            <!--end container-->
+        </section>
+        <!-- END PRICING -->
   </main><!-- End #main -->
   {% endblock  %}
