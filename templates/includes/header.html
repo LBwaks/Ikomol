@@ -1,7 +1,7 @@
 {% load static %}
 {% load admin_urls %}
  <!-- ======= Top Bar ======= -->
- <section id="topbar" class="d-flex align-items-center">
+ {% comment %} <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">info@ikomolinternet.com</a></i>
@@ -12,10 +12,10 @@
         <a href="https://wa.me/+254759588698" class="instagram"><i class="bi bi-whatsapp"></i></a>
       </div>
     </div>
-  </section>
+  </section> {% endcomment %}
 
   <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
+  {% comment %} <header id="header" class="d-flex align-items-center">
     <div class="container d-flex justify-content-between align-items-center">
 
       <div class="logo">
@@ -47,26 +47,27 @@
       </nav><!-- .navbar -->
 
     </div>
-  </header><!-- End Header -->
+  </header><!-- End Header --> {% endcomment %}
   <!--Navbar Start-->
         <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
             <div class="container">
                 <!-- LOGO -->
                 <a class="navbar-brand logo text-uppercase" href="index-1.html">
-                    <img src="images/logo-light.png" class="logo-light" alt="logo-light" height="18">
-                    <img src="images/logo-dark.png" class="logo-dark" alt="logo-dark" height="18">
+                    <img src="{% static 'img/logo/ikomol logo.png' %}" class="logo-light" alt="logo-light" height="18">
+                    <img src="{% static 'img/logo/ikomol logo.png' %}" class="logo-dark" alt="logo-dark" height="18">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="mdi mdi-menu"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
+                  {% with request.resolver_match.url_name as url_name %}
                     <ul class="navbar-nav ms-auto navbar-center">
                         <li class="nav-item">
-                            <a href="#home" class="nav-link">Home</a>
+                            <a class="nav-link {% if url_name == 'home' %} active {% endif %}" href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#service" class="nav-link">Service</a>
+                            <a class="nav-link {% if url_name == 'services' %} active {% endif %}" href="{% url 'services' %}">Service</a>
                         </li>
                         <li class="nav-item">
                             <a href="#process" class="nav-link">Process</a>
@@ -78,15 +79,16 @@
                             <a href="#portfolio" class="nav-link">Portfolio</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#pricing" class="nav-link">Pricing</a>
+                            <a  class="nav-link {% if url_name == 'pricing' %} active {% endif %}" href="{% url 'pricing' %}">Pricing</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#blog" class="nav-link">Blog</a>
+                            <a class=" nav-link {% if url_name == 'blogs' %} active {% endif %}" href="{% url 'blogs' %}">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#contact" class="nav-link">Contact</a>
+                            <a  class="nav-link {% if url_name == 'contact' %} active {% endif %}" href="{% url 'contact' %}">Contact</a>
                         </li>
                     </ul>
+                    {% endwith %}
                 </div>
                 <!--end navabar-collapse-->
             </div>

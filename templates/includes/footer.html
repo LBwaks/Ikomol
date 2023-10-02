@@ -1,67 +1,6 @@
- <!-- ======= Footer ======= -->
- <footer id="footer">
-
-  
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'home' %}">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'pricing' %}">Pricing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'services' %}">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'about' %}">About Us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="{% url 'contact' %}">Contact Us</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a >Consultancy</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a >Home Internet</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a >Corporate Internet</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a >SLA Base Support</a></li>
-
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h4>Our Mission</h4>
-            <p>To build and maintain strong, long-term relationships with each client that enables us meet their current
-              and future requirements.</p>
-            
-
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-info">
-            <h3>About iKomol Internet</h3>
-            <p>iKomol Communication is a committed digital business enterprise based in Nairobi, Kenya. We offer
-              ICT solutions to homes, SME and schools ranging from internet solutions, consultancy services as
-              well contractual works for telecommunication companies.</p>
-            <div class="social-links mt-3">
-              
-              <a href="https://web.facebook.com/people/IKomol-Home-Internet/100063882498622/" class="facebook"><i class="bx bxl-facebook"></i></a>
-              
-              <a href="https://wa.me/+254726114104" class="instagram"><i class="bi bi-whatsapp"></i></a>
-             
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>iKomol Internet</span></strong>. All Rights Reserved
-      </div>
-      
-    </div>
-  </footer><!-- End Footer -->
+ {% load static %}
+ 
+ 
   
    <!-- START FOOTER -->
         <footer class="bg-footer">
@@ -69,9 +8,10 @@
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="mt-4">
-                            <a href="index-1.html"><img src="images/logo-light.png" alt="" height="18"></a>
-                            <p class="text-white-50 mt-3 pt-2 mb-0 ">It is a long established fact that a reader will be of
-                                a page reader will be of at its layout.</p>
+                            <h6 class="text-white text-uppercase fs-16">Our Mission</h6>
+                            <a href="index-1.html"><img src="{% static 'img/logo/ikomol logo.png' %}" alt="" height="18"></a>
+                            <p class="text-white-50 mt-3 pt-2 mb-0 ">To build and maintain strong, long-term relationships with each client that enables us meet their current
+              and future requirements.</p>
                             <div class="mt-4">
                                 <ul class="list-inline footer-social">
 
@@ -107,12 +47,12 @@
 
                     <div class="col-lg-3 col-md-6">
                         <div class="mt-4 ps-0 ps-lg-5">
-                            <h6 class="text-white text-uppercase fs-16">Resources</h6>
+                            <h6 class="text-white text-uppercase fs-16">Our Services</h6>
                             <ul class="list-unstyled footer-link mt-3 mb-0">
-                                <li><a href="#">Company History</a></li>
-                                <li><a href="#">Documentation</a></li>
-                                <li><a href="#">Term &amp; Service</a></li>
-                                <li><a href="#">Components</a></li>
+                                <li><a>Consultancy</a></li>
+                                <li><a>Home Internet</a></li>
+                                <li><a>Corporate Internet</a></li>
+                                <li><a>SLA Base Support</a></li>
                             </ul>
                         </div>
                     </div>
@@ -120,12 +60,12 @@
 
                     <div class="col-lg-2 col-md-6">
                         <div class="mt-4">
-                            <h6 class="text-white text-uppercase fs-16">Help</h6>
+                            <h6 class="text-white text-uppercase fs-16">Useful Links</h6>
                             <ul class="list-unstyled footer-link mt-3 mb-0">
-                                <li><a href="#">Sign Up </a></li>
-                                <li><a href="#">Login</a></li>
-                                <li><a href="#">Careers</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="{% url 'home' %}">Home</a></li>
+                                <li><a href="{% url 'pricing' %}">Pricing</a></li>
+                                <li><a href="{% url 'services' %}">Services</a></li>
+                                <li><a href="{% url 'contact' %}">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -133,24 +73,17 @@
 
                     <div class="col-lg-4">
                         <div class="mt-4">
-                            <h6 class="text-white text-uppercase fs-16">Latest news</h6>
+                            <h6 class="text-white text-uppercase fs-16">About iKomol Internet</h6>
                             <div class="mt-3 mb-0">
                                 <div class="d-flex">
-                                    <i class="mdi mdi-twitter text-white-50 float-start"></i>
+                                    {% comment %} <i class="mdi mdi-twitter text-white-50 float-start"></i> {% endcomment %}
                                     <div class="flex-grow-1">
-                                        <p class="text-white-50 ps-3">Pleasures have to repudiated annoyances accepted
-                                            therefore always holds chooses enjoy a pleasure consequences.</p>
+                                        <p class="text-white-50 ps-3">iKomol Communication is a committed digital business enterprise based in Nairobi, Kenya. We offer
+              ICT solutions to homes, SME and schools ranging from internet solutions, consultancy services as
+              well contractual works for telecommunication companies.</p>
                                     </div>
                                 </div>
-                                <div class="mt-2">
-                                    <div class="d-flex">
-                                        <i class="mdi mdi-twitter text-white-50 float-start"></i>
-                                        <div class="flex-grow-1">
-                                            <p class="text-white-50 ps-3">Greater pleasures el esndures pains avoid welcomed
-                                                avoided pariatu</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
