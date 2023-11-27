@@ -122,20 +122,20 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 DATABASES = {
     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1200),
 }
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         # "NAME": os.getenv("NAME"),
-#         "NAME": "Ikomol",
-#         "USER": "postgres",
-#         "PASSWORD": "postgres",
-#         "HOST": "localhost",
-#         # "HOST":"tech_db",
-#         # "PORT": os.getenv("PORT"),
-#         "PORT": "5432",
-#         #
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        # "NAME": os.getenv("NAME"),
+        "NAME": "Ikomol",
+        "USER": "postgres",
+        "PASSWORD": "postgres",
+        "HOST": "localhost",
+        # "HOST":"tech_db",
+        # "PORT": os.getenv("PORT"),
+        "PORT": "5432",
+        #
+    }
+}
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"

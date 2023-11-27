@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.conf import settings
 
@@ -14,16 +13,16 @@ speed = [
     ("6 mbps", "6 mbps"),
     ("10 mbps", "10 mbps"),
     ("12 mbps", "12 mbps"),
-    ("Custom", "Custom")
-    ]
+    ("Custom", "Custom"),
+]
 types = [
     ("Tit", "Tit"),
     ("Sparrow", "Sparrow"),
     ("Owl", "Owl"),
     ("Ostrich", "Ostrich"),
     ("Eagle", "Eagle"),
-    ("Falcon", "Falcon")
-    ]
+    ("Falcon", "Falcon"),
+]
 
 
 def my_slugify_function(content):
@@ -72,14 +71,13 @@ class Service(models.Model):
     )
     title = models.CharField(max_length=100)
     slug = AutoSlugField(populate_from="title", slugify_function=my_slugify_function)
-    description = models.TextField()
+    description = models.TextField(max_length=200)
     photo = models.ImageField(
         upload_to="services/",
     )
     created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-
         return self.title
 
 

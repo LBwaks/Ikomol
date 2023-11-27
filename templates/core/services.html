@@ -2,52 +2,65 @@
 {% block title %}Our Services {% endblock title %}
 {% block content %}
 {% load static %}
+{% load humanize %}
 <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-
-        <ol>
-          <li><a href="{% url 'home' %}">Home</a></li>
-          <li>Services</li>
-        </ol>
-        <h2>Services</h2>
-
-      </div>
-    </section><!-- End Breadcrumbs -->
-
-    <!-- ======= Services Section ======= -->
-   <!-- ======= Services Section ======= -->
-   <section id="services" class="services">
-    <div class="container">
-
-      <div class="row">
-        
-        
-
-        {% for service in  services %}
-        <div class="col-lg-6 col-md-6 d-flex align-items-stretch mt-4">            
-          <div class="card mb-5 shadow  bg-body rounded text-center " >
-            <img src="{{service.photo.url}}" class="card-img-top" alt="{{service.title}}"> 
-            <div class="card-body bg-light text-dark ">
-              <h5 class="card-title fw-bold fs-5 py-1">{{service.title}}</h5>
-              <p class="card-text text-muted">{{service.description  }}</p>
-             
-            </div>
-          </div>
-        </div>
-        {% empty %}
-<p> No Service Listed !</p>
-        {% endfor %}
-
-
-      </div>
-
+     <section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <ol class="flex-grow-1">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li>Contact Us</li>
+      </ol>
+      <h2 class="order-lg-2 order-sm-1">Contact Us</h2>
     </div>
-  </section><!-- End Services Section -->
-   
-   
+  </div>
+</section>
+    <!-- End Breadcrumbs -->
+
+      
+    <!-- START SERVICE -->
+        <section class="section" id="service">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="header-title text-center">
+                            <p class="text-uppercase text-muted mb-2">Services We're Provided</p>
+                            <h3>We do all Creative Services</h3>
+                            <div class="title-border mt-3"></div>
+                            <p class="text-muted mt-3">We craft digital, graphic and dimensional thinking, to create category leading brand experiences that have meaning and add a value.</p>
+                        </div>
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+
+                <div class="row">
+                  {% for service in  services %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service-box text-center mt-4">
+                            <img src="{{service.photo.url}}" alt="{{service.title}}" height="105" width="160" class="ivmg-fluid">
+                            <h5 class="fs-18 mt-4">{{service.title}}</h5>
+                            <div class="lighlight-border mt-3"></div>
+                            <p class="text-muted mt-3">{{service.description |truncatechars:200}}</p>
+                        </div>
+                    </div>
+                    <!--end col-->   
+                  {% empty %}
+                  <div class="col-12">
+                        
+                            <p class="text-muted mt-3 text-center">No Services Found !</p>
+                        </div>
+                    </div>
+                    <!--end col-->
+                  {% endfor %}                 
+                </div>
+                <!--end row-->
+            </div>
+            <!--end container-->
+        </section>
+        <!-- END SERVICE -->
 
   </main><!-- End #main -->
   {% endblock  %}
