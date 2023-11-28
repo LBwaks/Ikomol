@@ -4,8 +4,10 @@
 {% block content %}
 {% load static %}
 {% load humanize %}
-<main id="main">
-
+<main id="main" >
+<section class="bg-main" id="home">
+            <div class="bg-overlay"></div>
+</section>
     <!-- ======= Breadcrumbs ======= -->
      <section id="breadcrumbs" class="breadcrumbs">
   <div class="container">
@@ -21,110 +23,7 @@
     <!-- End Breadcrumbs -->
 
     <!-- ======= Pricing Section ======= -->
-    <section class="pricing-plan">
-      <div class="container">
-          <div class="row">
-           
-              {% for plan in pricings %}
-              <div class="col-md-3 col-sm-6  pb-4 ">
-               
-           {% if plan.type == 'Ostrich' %}
-           <div class="pricingTable summer">
-
-            {% elif plan.type == 'Falcon' %}
-           <div class="pricingTable beige">
-
-            {% elif plan.type == 'Sparrow' %}
-           <div class="pricingTable black">
-
-            {% elif plan.type == 'Owl' %}
-           <div class="pricingTable purple">
-
-            {% elif plan.type == 'Tit' %}
-           <div class="pricingTable green">
-
-           {% else %}
-           <div class="pricingTable orange">
-           
-           {% endif %}
-                    <h3 class="title">{{plan.download_speed}}</h3>
-                    <div class="price-value">Ksh {{plan.price |intcomma}}
-                        <span class="month">/{{plan.period}}</span>
-                    </div>
-                    <ul class="pricing-content">
-     
     
-                        <li {% if not plan.download_speed %} class="disable text-decoration-line-through" {% endif %}> 
-                          {% if plan.download_speed %}  {{plan.download_speed}} 
-                          {% comment %} {% else %}<i class="bx bx-x"></i> <span>{{plan.download_speed}}</span> {% endcomment %}
-                          {% endif %}
-                      </li>
-    
-                      <li {% if not plan.sd_movie_music_streaming %} class="disable text-decoration-line-through" {% endif %}> 
-                        {% if plan.sd_movie_music_streaming %}  {{plan.sd_movie_music_streaming}} 
-                        {% else %}<span>SD Movie &amp; music streaming</span>
-                        {% endif %}
-                    </li>
-                    <li {% if not plan.internet_surfing %} class="disable text-decoration-line-through" {% endif %}> 
-                      {% if plan.internet_surfing %}  {{plan.internet_surfing}} 
-                      {% else %}<span>Internet surfing, social media &amp; email</span>
-                      {% endif %}
-                  </li>
-                  <li {% if not plan.unlimited_usage %} class="disable text-decoration-line-through" {% endif %}> 
-                    {% if plan.unlimited_usage %}  {{plan.unlimited_usage}} 
-                    {% else %}<span>Unlimited Usage</span>
-                    {% endif %}
-                </li>
-                <li {% if not plan.hd_tv_shows %} class="disable text-decoration-line-through" {% endif %}> 
-                  {% if plan.hd_tv_shows %}  {{plan.hd_tv_shows}} 
-                  {% else %}<span>HD &amp; TV Shows</span>
-                  {% endif %}
-              </li>
-              <li {% if not plan.light_video_downloads %} class="disable text-decoration-line-through" {% endif %}> 
-                {% if plan.light_video_downloads %}  {{plan.light_video_downloads}} 
-                {% else %}<span>Light Video downloads</span>
-                {% endif %}
-            </li>
-            <li {% if not plan.heavy_video_downloads %} class="disable text-decoration-line-through" {% endif %}> 
-              {% if plan.heavy_video_downloads %}  {{plan.heavy_video_downloads}} 
-              {% else %}<span>Heavy Video downloads</span>
-              {% endif %}
-          </li>
-          <li {% if not plan.multiple_devices %} class="disable text-decoration-line-through" {% endif %}> 
-            {% if plan.multiple_devices %}  {{plan.multiple_devices}} 
-            {% else %}<span>Multiple devices</span>
-            {% endif %}
-        </li>
-        <li {% if not plan.online_gaming_live_streams %} class="disable text-decoration-line-through" {% endif %}> 
-          {% if plan.online_gaming_live_streams %}  {{plan.online_gaming_live_streams}} 
-          {% else %}<span>Online gaming &amp; live streams</span>
-          {% endif %}
-      </li>
-      <li {% if not plan.cctv_devices_apability %} class="disable text-decoration-line-through" {% endif %}> 
-        {% if plan.cctv_devices_apability %}  {{plan.cctv_devices_apability}} 
-        {% else %}<span>CCTV devices Capability</span>
-        {% endif %}
-    </li>
-                      <li {% if not plan.heavy_online_gaming_downloading %} class="disable text-decoration-line-through" {% endif %}> 
-                        {% if plan.heavy_online_gaming_downloading %}  {{plan.heavy_online_gaming_downloading}} 
-                        {% else %}<span>Heavy online gaming &amp; Downloading</span>
-                        {% endif %}
-                    </li>
-                      
-                           </ul>
-                    <a href="tel:+254759588698" class="pricingTable-signup">Call Us</a>
-                </div>
-            </div>
-              {% empty %}
-              <p>No Plans Available! </p>
-              {% endfor %}
-              
-              
-          </div>
-      </div>
-    </div>
-    </div>
-    </section>
 <!-- START PRICING -->
         <section class="section bg-light" id="pricing">
             <div class="container">

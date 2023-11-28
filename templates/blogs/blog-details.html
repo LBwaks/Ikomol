@@ -5,21 +5,22 @@
 {% load blog_tags %}
 {% load recent_blogs %}
 {% load humanize %}
-<main id="main">
-
+<main id="main" >
+<section class="bg-main" id="home">
+            <div class="bg-overlay"></div>
+</section>
     <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-
-        <ol>
-          <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'blogs' %}">Blog</a></li>
-        </ol>
-        <h2>{{blog.title}}</h2>
-
-      </div>
-    </section><!-- End Breadcrumbs -->
-
+     <section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <ol class="flex-grow-1">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li>Pricing</li>
+      </ol>
+      <h2 class="order-lg-2 order-sm-1">Pricing</h2>
+    </div>
+  </div>
+</section>
     <!-- ======= Blog Single Section ======= -->
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
@@ -70,7 +71,7 @@
 
             
 
-            <div class="blog-comments" id="blog-comments">
+            {% comment %} <div class="blog-comments" id="blog-comments">
 
               <h4 class="comments-count"> {{blog.comments.count}}  Comments</h4>
 
@@ -117,11 +118,7 @@
                       <input name="email" type="text" class="form-control" placeholder="Your Email*">
                     </div>
                   </div>
-                  {% comment %} <div class="row">
-                    <div class="col form-group">
-                      <input name="website" type="text" class="form-control" placeholder="Your Website">
-                    </div>
-                  </div> {% endcomment %}
+                  
                   <div class="row">
                     <div class="col form-group">
                       <textarea name="body" class="form-control" placeholder="Your Comment*"></textarea>
@@ -133,7 +130,7 @@
 
               </div>
 
-            </div><!-- End blog comments -->
+            </div><!-- End blog comments --> {% endcomment %}
 
           </div><!-- End blog entries list -->
 

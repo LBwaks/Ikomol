@@ -42,6 +42,7 @@ class Package(models.Model):
     slug = AutoSlugField(populate_from="type", slugify_function=my_slugify_function)
     period = models.CharField(choices=periods, max_length=20)
     download_speed = models.CharField(choices=speed, max_length=20)
+    
     sd_movie_music_streaming = models.CharField(max_length=255, blank=True, null=True)
     internet_surfing = models.CharField(max_length=255, blank=True, null=True)
     unlimited_usage = models.CharField(max_length=255, blank=True, null=True)

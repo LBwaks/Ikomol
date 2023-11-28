@@ -5,71 +5,73 @@
 {% load humanize %}
 {% load blog_tags %}
 {% load recent_blogs %}
-<main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
+<main id="main" >
+<section class="bg-main" id="home">
+            <div class="bg-overlay"></div>
+</section>
+ <!-- ======= Breadcrumbs ======= -->
     <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <ol class="flex-grow-1">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li>Contact Us</li>
+      </ol>
+      <h2 class="order-lg-2 order-sm-1">Contact Us</h2>
+    </div>
+  </div>
+</section>
 
-        <ol>
-          <li><a href="{% url 'home' %}">Home</a></li>
-          <li>Blog</li>
-        </ol>
-        <h2>Blog</h2>
+<!-- START BLOG -->
+        <section class="section" id="blog">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="row">
+                          {% for blog in blogs %}
+                              <div class="col-lg-6">
+                                  <div class="blog-box box-shadow rounded mt-4 p-3">
+                                      <div class="blog-img px-2">
+                                          <img src="{{blog.photo.url}}" class="img-flluid rounded" width="350" height="231" alt="">
+                                          <div class="read-more">
+                                              <a href="{{blog.get_absolute_url}}"><i class="mdi mdi-arrow-right"></i></a>
+                                          </div>
+                                      </div>
+                                      <div class="mt-4">
+                                          <a href="{{blog.get_absolute_url}}" class="primary-link">
+                                              <h5 class="fs-19 mb-1">{{blog.title}}</h5>
+                                          </a>
+                                          <p class="text-muted mt-2">{{blog.description | safe | truncatewords:20}} </p>
+                                          <div class="d-flex align-items-center justify-content-between">
+                                              <div class="d-flex align-items-center">
+                                                  <img src="images/users/img-5.jpg" alt="" height="45" class="rounded-circle me-2">
+                                                  <p class="text-muted mb-0">{{blog.user.username}}</p>
+                                              </div>
+                                              <p class="mb-0 float-end text-muted"><i
+                                                      class="mdi mdi-clock-time-four-outline align-middle me-1 text-primary"></i> {{blog.created_date|naturaltime}}</p>
+                                              {% comment %} <p class="mb-0 float-end text-muted"><i
+                                                      {% comment %} class="mdi mdi-clock-time-four-outline align-middle me-1 text-primary"></i>{% if blog.comments.count != 0  %} {{blog.comments.count}}</p>  {% endcomment %}
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!--end blog-->
+                              </div><!-- end col -->
+                          {% empty %}
+                         <div class="blog-box box-shadow rounded mt-4 p-3">
+                                      
+                                      <div class="mt-4">
+                                         
+                                          <p class="text-muted mt-2 text-center">No Blogs Found !</p>
+                                         
+                                      </div>
+                                  </div>
+                                  <!--end no blog-->
+                          {% endfor %}
 
-      </div>
-    </section><!-- End Breadcrumbs -->
-
-    <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row">
-
-          <div class="col-lg-8 entries">
-
-          {% for blog in blogs %}
-          <article class="entry">
-
-            <div class="entry-img">
-              <img src="{{blog.photo.url}}" alt="" class="img-fluid">
-            </div>
-
-            <h2 class="entry-title">
-              <a href="{{blog.get_absolute_url}}">{{blog.title}}</a>
-            </h2>
-
-            <div class="entry-meta">
-              <ul>
-                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a>{{blog.user.username}}</a></li>
-                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a><time>{{blog.created_date|naturaltime}}</time></a></li>
-                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a >{% if blog.comments.count != 0  %} {{blog.comments.count}} {% endif %}</a></li>
-                
-              </ul>
-            </div>
-
-            <div class="entry-content">
-              <p>
-                {{blog.description | safe | truncatewords:20}}             </p>
-              <div class="read-more">
-                <a href="{{blog.get_absolute_url}}">Read More</a>
-              </div>
-            </div>
-
-          </article><!-- End blog entry -->
-          {% empty %}
-          <article class="entry">
-            <div class="entry-content">
-              <p>
-                No Blogs Found !</p>
-             
-            </div>
-
-          </article><!-- End blog entry -->
-          {% endfor %}
-
-           
-{% if  page_obj %}
+                    
+                </div>
+                <!--end row-->
+                {% if  page_obj %}
             <div class="blog-pagination">
               <ul class="justify-content-center">
                 {% if page_obj.has_previous %}
@@ -91,12 +93,11 @@
                 
               </ul>
             </div>
-{% endif %}
-          </div><!-- End blog entries list -->
-
-          <div class="col-lg-4">
-
-            <div class="sidebar">
+            {% endif %}
+                    </div>
+                    <!--end col-->
+                    <div class="col-lg-4">
+                        <div class="sidebar">
 
               {% include 'includes/form-search.html' %}
               <!-- End sidebar search formn-->
@@ -136,13 +137,19 @@
               </div><!-- End sidebar tags-->
 
             </div><!-- End sidebar -->
+                        
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
 
-          </div><!-- End blog sidebar -->
-
-        </div>
-
-      </div>
-    </section><!-- End Blog Section -->
+                
+            </div>
+            <!--end container-->
+        </section>
+        <!-- END BLOG -->
+   
 
   </main><!-- End #main -->
+  
   {% endblock  %}
