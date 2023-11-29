@@ -28,18 +28,7 @@
         <ul>
           <li><a class=" {% if url_name == 'home' %} active {% endif %}" href="{% url 'home' %}">Home</a></li>
           <li><a class=" {% if url_name == 'about' %} active {% endif %}" href="{% url 'about' %}">About Us</a></li>
-          <li><a class=" {% if url_name == 'services' %} active {% endif %}" href="{% url 'services' %}">Services</a></li>       
           
-        <li><a class=" {% if url_name == 'pricing' %} active {% endif %}" href="{% url 'pricing' %}">Pricing</a></li>
-        <li><a class="{% if url_name == 'blogs' %} active {% endif %}" href="{% url 'blogs' %}">Blogs</a></li>
-         
-          <li><a class=" {% if url_name == 'contact' %} active {% endif %}" href="{% url 'contact' %}">Contact Us</a></li>
-          {% if user.is_authenticated %}
-          <li><a href="{% url 'admin:index' %}">Admin</a></li>
-          <li><a href="{% url 'account_logout' %}">Log Out</a></li>
-          {% else %}
-          <li><a href="{% url 'account_login' %}">Login</a></li>
-          {% endif %}
         </ul>
         {% endwith %}
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -52,9 +41,10 @@
         <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
             <div class="container">
                 <!-- LOGO -->
-                <a class="navbar-brand logo text-uppercase" href="index-1.html">
+                <a class="navbar-brand logo text-uppercase" href="{% url 'home' %}">
                     <img src="{% static 'img/logo/ikomol logo.png' %}" class="logo-light" alt="logo-light" height="18">
                     <img src="{% static 'img/logo/ikomol logo.png' %}" class="logo-dark" alt="logo-dark" height="18">
+                    iKomol Internet
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,6 +69,18 @@
                         <li class="nav-item">
                             <a  class="nav-link {% if url_name == 'contact' %} active {% endif %}" href="{% url 'contact' %}">Contact</a>
                         </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a  class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a  class="nav-link {% if url_name == 'account_logout' %} active {% endif %}" href="{% url 'account_logout' %}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a  class="nav-link {% if url_name == 'account_login' %} active {% endif %}" href="{% url 'account_login' %}">Login</a>
+                        </li>
+                        {% endif %}
                     </ul>
                     {% endwith %}
                 </div>

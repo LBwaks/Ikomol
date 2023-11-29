@@ -8,11 +8,11 @@ from django_extensions.db.fields import AutoSlugField
 # Create your models here.
 periods = [("Day", "Day"), ("Month", "Month"), ("Year", "Year")]
 speed = [
-    ("3 mbps", "3 mbps"),
-    ("4 mbps", "4 mbps"),
+    # ("3 mbps", "3 mbps"),
     ("6 mbps", "6 mbps"),
+    ("8 mbps", "8 mbps"),
     ("10 mbps", "10 mbps"),
-    ("12 mbps", "12 mbps"),
+    ("15 mbps", "15 mbps"),
     ("Custom", "Custom"),
 ]
 types = [
@@ -42,7 +42,7 @@ class Package(models.Model):
     slug = AutoSlugField(populate_from="type", slugify_function=my_slugify_function)
     period = models.CharField(choices=periods, max_length=20)
     download_speed = models.CharField(choices=speed, max_length=20)
-    
+
     sd_movie_music_streaming = models.CharField(max_length=255, blank=True, null=True)
     internet_surfing = models.CharField(max_length=255, blank=True, null=True)
     unlimited_usage = models.CharField(max_length=255, blank=True, null=True)
@@ -72,7 +72,7 @@ class Service(models.Model):
     )
     title = models.CharField(max_length=100)
     slug = AutoSlugField(populate_from="title", slugify_function=my_slugify_function)
-    description = models.TextField(max_length=200)
+    description = models.TextField(max_length=260)
     photo = models.ImageField(
         upload_to="services/",
     )
