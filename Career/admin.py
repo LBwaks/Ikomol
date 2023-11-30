@@ -14,7 +14,8 @@ class JobAdmin(admin.ModelAdmin):
     #     Inline,
     # ]
     # raw_id_fields = ('',)
-    # readonly_fields = ('',)
+    readonly_fields = ("user",)
+
     # search_fields = ('',)
     # date_hierarchy = ''
     # ordering = ('',)

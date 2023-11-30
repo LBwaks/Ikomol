@@ -7,104 +7,159 @@
 {% load recent_blogs %}
 <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
+    
 
-        <ol>
-          <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'blogs' %}">Blogs</a></li>
+    <section class="bg-main" id="home">
+            <div class="bg-overlay"></div>
+</section>
+ <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <ol class="flex-grow-1">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'blogs' %}">Blogs</a></li>
           <li>Search Results For:</li>
         </ol>
-        <h2>{{q}}</h2>
+      <h2 class="order-lg-2 order-sm-1">{{q}}</h2>
+    </div>
+  </div>
+</section>
+   <!-- End Breadcrumbs -->
 
-      </div>
-    </section><!-- End Breadcrumbs -->
+    <!-- START BLOG -->
 
-    <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog">
-      <div class="container" data-aos="fade-up">
+    <!-- START BLOG -->
+        <section class="section" id="blog">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="row">
+                          {% for blog in results %}
+                              <div class="col-lg-6">
+                                  <div class="blog-box box-shadow rounded mt-4 p-3">
+                                      <div class="blog-img px-2">
+                                          <img src="{{blog.photo.url}}" class="img-flluid rounded" width="350" height="231" alt="">
+                                          <div class="read-more">
+                                              <a href="{{blog.get_absolute_url}}"><i class="mdi mdi-arrow-right"></i></a>
+                                          </div>
+                                      </div>
+                                      <div class="mt-4">
+                                          <a href="{{blog.get_absolute_url}}" class="primary-link">
+                                              <h5 class="fs-19 mb-1">{{blog.title}}</h5>
+                                          </a>
+                                          <p class="text-muted mt-2">{{blog.description | safe | truncatewords:20}} </p>
+                                          <div class="d-flex align-items-center justify-content-between">
+                                              <div class="d-flex align-items-center">
+                                                  <img src="images/users/img-5.jpg" alt="" height="45" class="rounded-circle me-2">
+                                                  <p class="text-muted mb-0">{{blog.user.username}}</p>
+                                              </div>
+                                              <p class="mb-0 float-end text-muted"><i
+                                                      class="mdi mdi-clock-time-four-outline align-middle me-1 text-primary"></i> {{blog.created_date|naturaltime}}</p>
+                                              {% comment %} <p class="mb-0 float-end text-muted"><i
+                                                      {% comment %} class="mdi mdi-clock-time-four-outline align-middle me-1 text-primary"></i>{% if blog.comments.count != 0  %} {{blog.comments.count}}</p>  {% endcomment %}
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!--end blog-->
+                              </div><!-- end col -->
+                          {% empty %}
+                         <div class="blog-box box-shadow rounded mt-4 p-3">
+                                      
+                                      <div class="mt-4">
+                                         
+                                          <p class="text-muted mt-2 text-center"> No Search Results With Those Keywords Found !</p>
+                                         
+                                      </div>
+                                  </div>
+                                  <!--end no blog-->
+                          {% endfor %}
 
-        <div class="row">
-
-          <div class="col-lg-12 entries mx-auto">
-            <div class="row d-flex align-items-stretch">
-          {% for blog in results %}
-          
-          <div class=" col-lg-6 col-md-6 d-flex align-items-stretch">
-            <article class="entry">
-
-                <div class="entry-img">
-                  <img src="{{blog.photo.url}}" alt="" class="img-fluid">
+                    
                 </div>
-    
-                <h2 class="entry-title">
-                  <a href="{{blog.get_absolute_url}}">{{blog.title}}</a>
-                </h2>
-    
-                <div class="entry-meta">
-                  <ul>
-                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a>{{blog.user.username}}</a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a><time>{{blog.created_date|naturaltime}}</time></a></li>
-    
-                  </ul>
-                </div>
-    
-                <div class="entry-content">
-                  <p>
-                    {{blog.description | safe | truncatewords:20}}             </p>
-                  <div class="read-more">
-                    <a href="{{blog.get_absolute_url}}">Read More</a>
-                  </div>
-                </div>
-    
-              </article><!-- End blog entry -->
-            </div>
-          {% empty %}
-          <article class="entry">
-            <div class="entry-content">
-              <p>
-                No Search Results With Those Keywords Found !</p>
-             
-            </div>
-
-          </article><!-- End blog entry -->
-        
-    
-          {% endfor %}
-        </div>
-           
-{% if  results %}
+                <!--end row-->
+                {% if  page_obj %}
             <div class="blog-pagination">
               <ul class="justify-content-center">
-                {% if results.has_previous %}
-                <li><a href="?page={{results.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"> <span>&laquo;</span> </a></li>
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{page_obj.previous_page_number }}"> <span>&laquo;</span> </a></li>
                 {% endif %}
 
-                {% for i in results.paginator.page_range %}
-                {% if results.number == i %}
+                {% for i in page_obj.paginator.page_range %}
+                {% if page_obj.number == i %}
                 <li class ="active"><a href="#">{{i}}</a></li>
                 {% else %}
-                <li><a href="?page={{i}}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{i}}</a></li>
+                <li><a href="?page={{i}}">{{i}}</a></li>
                 {% endif %}
                 {% endfor %}
 
-                {% if results.has_next %}
-                <li><a href="?page={{results.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">&raquo;</a></li>
+                {% if page_obj.has_next %}
+                <li><a href="?page={{page_obj.next_page_number }}">&raquo;</a></li>
                 
                 {% endif %}
                 
               </ul>
             </div>
-{% endif %}
-          </div><!-- End blog entries list -->
+            {% endif %}
+                    </div>
+                    <!--end col-->
+                    <div class="col-lg-4">
+                        <div class="sidebar">
 
-         
+              {% include 'includes/form-search.html' %}
+              <!-- End sidebar search formn-->
 
-        </div>
+             
 
-      </div>
-    </section><!-- End Blog Section -->
+              <h3 class="sidebar-title">Recent Posts</h3>
+              <div class="sidebar-item recent-posts">
+               {% recent_blogs as blogs %}
+               {% for blog in  blogs %}
+               <div class="post-item clearfix">
+                <img src="{{ blog.photo.url }}" alt="">
+                <h4><a href="{{blog.get_absolute_url}}">{{blog.title |truncatewords:30}}</a></h4>
+                <time >{{blog.created_date |naturaltime}}</time>
+              </div>
+               {% empty %}
+               <div class="post-item clearfix">
+                <h4>No Recent Blogs Found !</h4>
+                
+              </div>
+               {% endfor %}
+
+               
+
+              </div><!-- End sidebar recent posts-->
+
+              <h3 class="sidebar-title">Tags</h3>
+              <div class="sidebar-item tags">
+                <ul>
+                  {% get_tags as tags %}
+                 {% for tag in tags  %}
+                 <li><a href="{{tag.get_absolute_url}}">{{tag.name}} {% if tag.tags_count %} ({{tag.tags_count}}) {% endif %} </a></li>
+                 {% empty %}
+                 <li> No Tags Found </li>
+                 {% endfor %} 
+                 </ul>
+              </div><!-- End sidebar tags-->
+
+            </div><!-- End sidebar -->
+                        
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+
+                
+            </div>
+            <!--end container-->
+        </section>
+        <!-- END BLOG -->
+   
+     
+
+
+   
 
   </main><!-- End #main -->
   {% endblock  %}

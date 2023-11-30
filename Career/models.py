@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
+from django.urls import reverse
 from django.utils.translation import gettext as _
 from django_extensions.db.fields import AutoSlugField
 
@@ -24,6 +25,7 @@ class Job(models.Model):
     slug = AutoSlugField(populate_from="title", slugify_function=my_slugify_function)
     job_type = models.CharField(_("Job Type"), choices=JOB_TYPES, max_length=50)
     location = models.CharField(_("Location"), max_length=50)
+    summary = RichTextField()
     roles = RichTextField()
     skills = RichTextField()
     acedemic_qualification = RichTextField()
@@ -47,6 +49,6 @@ class Job(models.Model):
 
     def get_absolute_url(self):
         """Return absolute url for Job."""
-        return ""
+        return reverse("career-details", kwargs={"slug": self.slug})
 
     # TODO: Define custom methods here

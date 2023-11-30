@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}{{blog.title}}{% endblock title %}
+{% block content %}
+{% load static %}
+{% load blog_tags %}
+{% load recent_blogs %}
+{% load humanize %}
+<main id="main" >
+<section class="bg-main" id="home">
+            <div class="bg-overlay"></div>
+</section>
+    <!-- ======= Breadcrumbs ======= -->
+     <section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <ol class="flex-grow-1">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li>Carees</li>
+      </ol>
+      <h2 class="order-lg-2 order-sm-1">Careers</h2>
+    </div>
+  </div>
+</section>
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries mx-auto">
+
+            <article class="entry entry-single">
+
+              
+
+              <h2 class="entry-title">
+                <a>{{job.title}}</a>
+              </h2>
+
+              <div class="entry-meta">
+                <ul>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a>{{blog.user.username}}</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a ><time datetime="2020-01-01">{{blog.created_date}}</time></a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#blog-comments">{{blog.comments.count}}</a></li>
+                </ul>
+              </div>
+
+              <div class="entry-content">
+
+                <h6 class="text-decoration-underline">Summary</h6>
+                <p>{{job.summary}} </p> 
+
+                <h6 class="text-decoration-underline">Job Type </h6>
+                <p>{{job.job_type}} </p>
+
+                <h6 class="text-decoration-underline">Location</h6> 
+                <p>{{job.location}} </p> 
+
+                <h6 class="text-decoration-underline">Roles</h6> 
+                <p>{{job.roles}} </p> 
+
+                <h6 class="text-decoration-underline">Skills</h6> 
+                <p>{{job.skills}} </p> 
+
+                <h6 class="text-decoration-underline">Academic Qualification</h6> 
+                <p>{{job.acedemic_qualification}} </p>  
+
+                <h6 class="text-decoration-underline">Experience</h6> 
+                <p>{{job.experience}} </p>  
+
+                <h6 class="text-decoration-underline">Application Deadline</h6>  
+                <p>{{job.deadline}} </p>          
+
+                
+
+              </div>
+
+              <div class="entry-footer">
+                
+
+                <i class="bi bi-tags"></i>
+                <ul class="tags">
+                  <li><a href="{{blog.tag.get_absolute_url}}">To apply send you CV and cover letter to info@ikomol.com</a></li>
+                 
+                </ul>
+              </div>
+
+            </article><!-- End blog entry -->
+
+            
+
+           
+
+          </div><!-- End blog entries list -->
+
+          
+        </div>
+
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+  {% endblock  %}

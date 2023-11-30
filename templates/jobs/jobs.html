@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Our Services {% endblock title %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+<main id="main" >
+<section class="bg-main" id="home">
+            <div class="bg-overlay"></div>
+</section>
+    <!-- ======= Breadcrumbs ======= -->
+     <section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <ol class="flex-grow-1">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li>Careers</li>
+      </ol>
+      <h2 class="order-lg-2 order-sm-1">Careers</h2>
+    </div>
+  </div>
+</section>
+    <!-- End Breadcrumbs -->
+
+      
+    <!-- START SERVICE -->
+        <section class="section" id="service">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="header-title text-center">
+                            <p class="text-uppercase text-muted mb-2">Services We're Provided</p>
+                            <h3>We do all Creative Services</h3>
+                            <div class="title-border mt-3"></div>
+                            <p class="text-muted mt-3">We craft digital, graphic and dimensional thinking, to create category leading brand experiences that have meaning and add a value.</p>
+                        </div>
+                    </div>
+                    <!--end col-->
+                </div>
+                <!--end row-->
+
+                <div class="row">
+                  {% for job in  object_list %}
+                    <div class="col-lg-6 col-md-6">
+                        <div class="service-box  mt-4">                            
+                            <h5 class="fs-18 mt-4">{{job.title}}</h5>
+                            <div class="lighlight-border mt-3"></div>
+                            <p class="text-muted mt-3">{{job.summary |truncatechars:260}}</p>
+                            <a href="{{job.get_absolute_url}}" class="btn btn-sm btn-outline-info">View Opening</a>
+                        </div>
+                    </div>
+                    <!--end col-->   
+                  {% empty %}
+                  <div class="col-12">
+                        
+                            <p class="text-muted mt-3 text-center">No Job Openings Found !</p>
+                        </div>
+                    </div>
+                    <!--end col-->
+                  {% endfor %}                 
+                </div>
+                <!--end row-->
+            </div>
+            <!--end container-->
+        </section>
+        <!-- END SERVICE -->
+
+  </main><!-- End #main -->
+  {% endblock  %}
