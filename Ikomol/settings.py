@@ -124,24 +124,24 @@ WSGI_APPLICATION = "Ikomol.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASE_URL = os.getenv("DATABASE_URL")
-# DATABASES = {
-#     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1200),
-# }
+DATABASE_URL = os.getenv("DATABASE_URL")
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        # "NAME": os.getenv("NAME"),
-        "NAME": "Ikomol",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "localhost",
-        # "HOST":"tech_db",
-        # "PORT": os.getenv("PORT"),
-        "PORT": "5432",
-        #
-    }
+    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1200),
 }
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         # "NAME": os.getenv("NAME"),
+#         "NAME": "Ikomol",
+#         "USER": "postgres",
+#         "PASSWORD": "postgres",
+#         "HOST": "localhost",
+#         # "HOST":"tech_db",
+#         # "PORT": os.getenv("PORT"),
+#         "PORT": "5432",
+#         #
+#     }
+# }
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -227,26 +227,26 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # security settings
 # after https is configured
-# CSRF_COOKIE_SECURE = True
-# SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
-# # # content security policy
-# CSP_DEFAULT_SRC = ("'self'",)
-# CSP_STYLE_SRC = ("'self'",)
-# CSP_SCRIPT_SRC = ("'self'",)
-# CSP_IMG_SRC = ("'self'",)
-# CSP_FONT_SRC = ("'self'",)
+# # content security policy
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_STYLE_SRC = ("'self'",)
+CSP_SCRIPT_SRC = ("'self'",)
+CSP_IMG_SRC = ("'self'",)
+CSP_FONT_SRC = ("'self'",)
 
-# # # http sttrict transport security
-# SECURE_HSTS_SECONDS = 3600
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-# SECURE_HSTS_PRELOAD = True
+# # http sttrict transport security
+SECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
 
-# # # SECURE SSL REDIRECT
-# SECURE_SSL_REDIRECT = True
-# SECURE_BROWSER_XSS_FILTER = True
-# SECURE_CONTENT_TYPE_NOSNIFF = True
-# SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+# # SECURE SSL REDIRECT
+SECURE_SSL_REDIRECT = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
 LOGGING = {
@@ -397,16 +397,16 @@ JAZZMIN_SETTINGS = {
     # "dark_mode_theme": "cyborg",
 # }
 
-# sentry_sdk.init(
-#     dsn="https://e23e5d2d7ba74c1dbf91947d1bcb6370@o4504099387342848.ingest.sentry.io/4504099601973248",
-#     integrations=[
-#         DjangoIntegration(),
-#     ],
-#     # Set traces_sample_rate to 1.0 to capture 100%
-#     # of transactions for performance monitoring.
-#     # We recommend adjusting this value in production.
-#     traces_sample_rate=1.0,
-#     # If you wish to associate users to errors (assuming you are using
-#     # django.contrib.auth) you may enable sending PII data.
-#     send_default_pii=True,
-# )
+sentry_sdk.init(
+    dsn="https://e23e5d2d7ba74c1dbf91947d1bcb6370@o4504099387342848.ingest.sentry.io/4504099601973248",
+    integrations=[
+        DjangoIntegration(),
+    ],
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True,
+)

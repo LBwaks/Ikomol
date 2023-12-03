@@ -1,5 +1,5 @@
 amqp==5.1.1
-asgiref==3.5.2
+asgiref==3.7.2
 async-timeout==4.0.2
 billiard==3.6.4.0
 black==22.10.0
@@ -20,9 +20,12 @@ Deprecated==1.2.13
 dj-database-url==1.0.0
 Django==4.1.1
 django-allauth==0.51.0
+django-browser-reload==1.12.1
 django-ckeditor==6.3.2
 django-crispy-forms==1.14.0
+django-defender==0.9.7
 django-extensions==3.2.1
+django-jazzmin==2.6.0
 django-js-asset==2.0.0
 django-storages==1.13.1
 django-timezone-field==5.0
