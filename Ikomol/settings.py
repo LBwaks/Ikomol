@@ -128,20 +128,20 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 DATABASES = {
     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1200),
 }
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         # "NAME": os.getenv("NAME"),
-#         "NAME": "Ikomol",
-#         "USER": "postgres",
-#         "PASSWORD": "postgres",
-#         "HOST": "localhost",
-#         # "HOST":"tech_db",
-#         # "PORT": os.getenv("PORT"),
-#         "PORT": "5432",
-#         #
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        # "NAME": os.getenv("NAME"),
+        "NAME": "Ikomol",
+        "USER": "postgres",
+        "PASSWORD": "postgres",
+        "HOST": "localhost",
+        # "HOST":"tech_db",
+        # "PORT": os.getenv("PORT"),
+        "PORT": "5432",
+        #
+    }
+}
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
@@ -188,23 +188,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
-# USE_S3 = os.getenv('USE_S3') == 'TRUE'
-# if USE_S3:
+USE_S3 = os.getenv('USE_S3') == 'TRUE'
+if USE_S3:
 
-# AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
-# AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
-# AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
-# AWS_DEFAULT_ACL = "public-read"
-# AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
-# AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
-# AWS_QUERYSTRING_AUTH = False
-# AWS_S3_OBJECT_PARAMETERS = {"Access-Control-Allow-Origin": "*"}
-# # s3 static settings
-# AWS_LOCATION = "static"
-# STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
-# MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
-# STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-# DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
+AWS_DEFAULT_ACL = "public-read"
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_OBJECT_PARAMETERS = {"Access-Control-Allow-Origin": "*"}
+# s3 static settings
+AWS_LOCATION = "static"
+STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
+MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
+STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 STATIC_URL = "/static/"
 # MEDIA
