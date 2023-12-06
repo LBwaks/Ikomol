@@ -22,15 +22,15 @@
                   well contractual works for telecommunication companies.</p>
                   
                             <div class="mt-4">
-                                <a href="#" class="btn btn-primary mt-2">Get Started</a>
-                                <a href="#" class="btn btn-outline-white mt-2 ms-md-1">Learn More</a>
+                                <a href="{% url 'pricing' %}" class="btn btn-primary mt-2">Get Started</a>
+                                <a href="{% url 'services' %}" class="btn btn-outline-white mt-2 ms-md-1">Learn More</a>
                             </div>
                         </div>
                     </div>
                     <!--end col-->
                     <div class="col-lg-6">
                         <div class="home-dashboard mt-4 mt-lg-0">
-                            <img src="images/home/home6-1.png" alt="" class="img-fluid">
+                            <img src="{% static 'img/home/inter5.jpg' %}" alt="" class="img-fluid">
                             <div class="play-btn">
                                 <a href="https://www.w3schools.com/html/mov_bbb.mp4" class="image-popup">
                                     <i class="mdi mdi-motion-play"></i>
@@ -80,59 +80,22 @@
                 <!--end row-->
 
                 <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service-box text-center mt-4">
-                            <img src="images/feature/img-01.png" alt="" class="img-fluid">
-                            <h5 class="fs-18 mt-4">Web design</h5>
-                            <div class="lighlight-border mt-3"></div>
-                            <p class="text-muted mt-3">Those who do not know how to pursue pleasure rationally encounter
-                                consequences that are extremely painful.</p>
-                        </div>
-                    </div>
-                    <!--end col-->
-
+                   {% for service in services %}
                     <div class="col-lg-4 col-md-6">
                         <div class="service-box text-center mt-4 box-shadow">
-                            <img src="images/feature/img-02.png" alt="" class="img-fluid">
-                            <h5 class="fs-18 mt-4">Development</h5>
+                            <img src="images/feature/img-06.png" alt="" class="img-fluid">
+                            <h5 class="fs-18 mt-4"><a href="{% url 'services' %}">{{service.title}}</a></h5>
                             <div class="lighlight-border mt-3"></div>
-                            <p class="text-muted mt-3 mb-0">Due to its widespread use as filler text for layouts,
-                                non-readability is of great importance.</p>
+                            <p class="text-muted mt-3 mb-0">{{service.description |truncatechars:260}}</p>
                         </div>
                     </div>
                     <!--end col-->
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service-box text-center mt-4">
-                            <img src="images/feature/img-03.png" alt="" class="img-fluid">
-                            <h5 class="fs-18 mt-4">Branding</h5>
-                            <div class="lighlight-border mt-3"></div>
-                            <p class="text-muted mt-3 mb-0">There are many variations of passages of available, but the majority alteration in some form.</p>
+                   {% empty %}
+                        <div class="col-12">
+                        
+                            <p class="text-muted mt-3 text-center">No Services Found !</p>
                         </div>
-                    </div>
-                    <!--end col-->
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service-box text-center mt-4 box-shadow">
-                            <img src="images/feature/img-04.png" alt="" class="img-fluid">
-                            <h5 class="fs-18 mt-4">Easy to customize</h5>
-                            <div class="lighlight-border mt-3"></div>
-                            <p class="text-muted mt-3 mb-0">The generated Lorem Ipsum is therefore always free from repetition, injected humour.</p>
-                        </div>
-                    </div>
-                    <!--end col-->
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service-box text-center mt-4">
-                            <img src="images/feature/img-05.png" alt="" class="img-fluid">
-                            <h5 class="fs-18 mt-4">Unrivaled Quality</h5>
-                            <div class="lighlight-border mt-3"></div>
-                            <p class="text-muted mt-3 mb-0">It is a long established fact that a reader will be distracted
-                                by the readable content of a page.</p>
-                        </div>
-                    </div>
-                    <!--end col-->
-
+                   {% endfor %}
                     <div class="col-lg-4 col-md-6">
                         <div class="service-box text-center mt-4 box-shadow">
                             <img src="images/feature/img-06.png" alt="" class="img-fluid">
