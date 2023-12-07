@@ -30,12 +30,12 @@
                     <!--end col-->
                     <div class="col-lg-6">
                         <div class="home-dashboard mt-4 mt-lg-0">
-                            <img src="{% static 'img/home/inter5.jpg' %}" alt="" class="img-fluid">
-                            <div class="play-btn">
+                            <img src="{% static 'img/home/inter1.jpg' %}" alt="" class="img-fluid">
+                            {% comment %} <div class="play-btn">
                                 <a href="https://www.w3schools.com/html/mov_bbb.mp4" class="image-popup">
                                     <i class="mdi mdi-motion-play"></i>
                                 </a>
-                            </div>
+                            </div> {% endcomment %}
                         </div>
                     </div>
                     <!--end col-->
@@ -84,7 +84,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="service-box text-center mt-4 box-shadow">
                             <img src="images/feature/img-06.png" alt="" class="img-fluid">
-                            <h5 class="fs-18 mt-4"><a href="{% url 'services' %}">{{service.title}}</a></h5>
+                            <h5 class="fs-18 mt-4"><a href="{% url 'services' %}" class="text-decoration-none">{{service.title}}</a></h5>
                             <div class="lighlight-border mt-3"></div>
                             <p class="text-muted mt-3 mb-0">{{service.description |truncatechars:260}}</p>
                         </div>
@@ -96,16 +96,7 @@
                             <p class="text-muted mt-3 text-center">No Services Found !</p>
                         </div>
                    {% endfor %}
-                    <div class="col-lg-4 col-md-6">
-                        <div class="service-box text-center mt-4 box-shadow">
-                            <img src="images/feature/img-06.png" alt="" class="img-fluid">
-                            <h5 class="fs-18 mt-4">Online Marketing</h5>
-                            <div class="lighlight-border mt-3"></div>
-                            <p class="text-muted mt-3 mb-0">This is required when, for example, the is not yet available.
-                                Dummy text is also known as 'fill text'.</p>
-                        </div>
-                    </div>
-                    <!--end col-->
+                   
                 </div>
                 <!--end row-->
             </div>
