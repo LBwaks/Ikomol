@@ -57,7 +57,7 @@ class AboutView(TemplateView):
 class ContactView(SuccessMessageMixin, CreateView):
     template_name = "core/contact.html"
     form_class = ContactForm
-    success_message = "Your Message has been sent .Thank You"
+    success_message = "Your Message has been sent .ThankS"
 
     def form_valid(self, form):
         form.send()
