@@ -1,5 +1,0 @@
-[build]
-builder="paketo-buildpacks/python"
-buildCommand="pip install -r requirements.txt"
-startCommand ="python manage.py migrate && gunicorn Ikomol.wsgi"
-root="net"
